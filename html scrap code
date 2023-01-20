@@ -1,0 +1,32 @@
+## how to scrap any website code by calling Beautiful Soup library in python
+## code start here
+
+import urllib.request
+from bs4 import BeautifulSoup
+url = "https://github.com/"
+html = urllib.request.urlopen(url).read()
+
+soup = BeautifulSoup(html, 'html.parser')
+print (soup)
+## If some want the description against specific word like 'title'
+
+import urllib.request
+from bs4 import BeautifulSoup
+url = "https://github.com/"
+html = urllib.request.urlopen(url).read()
+
+soup = BeautifulSoup(html, 'html.parser')
+print('Title tag name: ', soup.title.name)
+print('Title tag text: ', soup.title.text)
+
+## Description against one word multiple times like wee see description against 'title'
+
+import urllib.request
+from bs4 import BeautifulSoup
+url = "https://github.com/"
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
+print("--------\nAll occurance of title tag \n--------")
+data = soup.find_all('title')
+for d in data:
+    print('title Content',d.contents, '\n')
